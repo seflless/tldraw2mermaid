@@ -4,6 +4,7 @@ import "@tldraw/tldraw/editor.css";
 import "@tldraw/tldraw/ui.css";
 import useMermaid from "./Mermaid";
 import { useLayoutEffect, useState } from "react";
+// @ts-ignore
 import { mermaidIt } from "./mermaidIt";
 
 export default function App() {
