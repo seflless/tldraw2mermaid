@@ -1,5 +1,7 @@
 # Draw Mermaid Diagrams using Tldraw
 
+Checkout the [live editor](https://seflless.github.io/tldraw2mermaid/).
+
 # Contributing
 
 ```
