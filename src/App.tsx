@@ -1,4 +1,4 @@
-import { Tldraw, createTLStore, useEditor } from "@tldraw/tldraw";
+import { Tldraw, createTLStore } from "@tldraw/tldraw";
 import { throttle } from "@tldraw/utils";
 import "@tldraw/tldraw/editor.css";
 import "@tldraw/tldraw/ui.css";
@@ -12,7 +12,7 @@ export default function App() {
   const [mermaidContent, setMermaidContent] = useState("");
   const [store] = useState(() => createTLStore({}));
 
-  const editor = useEditor();
+  // const editor = useEditor();
   // editor.set
 
   function toMarkdown(content: string) {
