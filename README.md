@@ -2,6 +2,12 @@
 
 Checkout the [live editor](https://seflless.github.io/tldraw2mermaid/).
 
+# Todos
+ - Support more arrow styles
+ - See if there are any more shapes we should support
+ - Support colors
+ - See if subgraphs makes sense (https://mermaid.js.org/syntax/flowchart.html#subgraphs), this would be equivalent to using Tldraw's groups/frames probably
+
 # Contributing
 
 ```
