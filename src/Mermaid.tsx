@@ -7,7 +7,7 @@ const useMermaid = (diagramCode: string) => {
 
   useEffect(() => {
     async function mermaidify() {
-      if (chartRef.current) {
+      if (chartRef.current && diagramCode) {
         chartRef.current.innerHTML = "";
         const output = await mermaid.mermaidAPI.render(
           "graphDiv",

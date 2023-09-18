@@ -8,19 +8,22 @@ export function mermaidIt(records) {
     if (record.type === "arrow") {
       const startShapeId = record.props.start?.boundShapeId;
       const endShapeId = record.props.end?.boundShapeId;
-      console.log(startShapeId, endShapeId);
-      if (!startShapeId || !endShapeId) {
-        console.log("skipped arrow");
-        continue;
-      } else {
-        console.log("didn't skip");
-      }
+      // console.log(startShapeId, endShapeId);
+      // if (!startShapeId || !endShapeId) {
+      //   console.log("skipped arrow");
+      //   continue;
+      // } else {
+      //   console.log("didn't skip");
+      // }
 
       const arrow = {
         type: "arrow",
         startShapeId,
         endShapeId,
         style: "---",
+        arrowheadStart: record.props.arrowheadStart,
+        arrowheadEnd: record.props.arrowheadEnd,
+        label: record.props?.text || " ",
       };
       arrows.push(arrow);
       // log(arrow)
@@ -65,8 +68,37 @@ export function mermaidIt(records) {
   }
   let arrowsContent = "";
   arrows.forEach((arrow) => {
-    console.log(arrow);
-    arrowsContent += `\n   ${arrow.startShapeId} ${arrow.style} ${arrow.endShapeId}`;
+    // console.log(arrow);
+
+    const label = arrow.label ? `|${arrow.label}|` : "";
+
+    // No Arrow head
+    if (arrow.arrowheadStart === "none" && arrow.arrowheadEnd === "none") {
+      arrowsContent += `\n   ${arrow.startShapeId} ---${label} ${arrow.endShapeId}`;
+    }
+    // Head only
+    else if (
+      arrow.arrowheadStart === "none" &&
+      arrow.arrowheadEnd === "arrow"
+    ) {
+      arrowsContent += `\n   ${arrow.startShapeId} -->${label} ${arrow.endShapeId}`;
+    }
+
+    // Tail only
+    else if (
+      arrow.arrowheadStart === "arrow" &&
+      arrow.arrowheadEnd === "none"
+    ) {
+      arrowsContent += `\n   ${arrow.endShapeId} -->${label} ${arrow.startShapeId}`;
+    }
+
+    // Both
+    else if (
+      arrow.arrowheadStart === "arrow" &&
+      arrow.arrowheadEnd === "arrow"
+    ) {
+      arrowsContent += `\n   ${arrow.startShapeId} <-->${label} ${arrow.endShapeId}`;
+    }
   });
   const mermaidFlowchart = `flowchart TD${nodesContent}${arrowsContent}`;
   if (mermaidFlowchart === undefined) {
