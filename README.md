@@ -7,6 +7,8 @@ Checkout the [live editor](https://seflless.github.io/tldraw2mermaid/).
  - See if there are any more shapes we should support
  - Support colors
  - See if subgraphs makes sense (https://mermaid.js.org/syntax/flowchart.html#subgraphs), this would be equivalent to using Tldraw's groups/frames probably
+ - Support only generating the current selection
+ - Set the tldraw document based on the mermaid diagram (what can we be bidirectional about?)
 
 # Contributing
 
